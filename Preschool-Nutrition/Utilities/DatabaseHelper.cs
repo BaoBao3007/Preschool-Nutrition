@@ -10,7 +10,7 @@ namespace Preschool_Nutrition.Utilities
 {
     public static class DatabaseHelper
     {
-        private static readonly string connectionString = "mysql://349U3FBRT6ZmZme.root:CMz2IYRmIss2MVOU@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/DACN";
+        private static readonly string connectionString = "mysql://349U3FBRT6ZmZme.root:PFx7weh2AOTODDH3@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/DACN";
 
         // Mở kết nối
         public static MySqlConnection GetConnection()
