@@ -12,7 +12,6 @@ namespace Preschool_Nutrition.Models
         public DateTime Ngay { get; set; }
         public string MaHocSinh { get; set; }
         public HocSinh HocSinh { get; set; }
-        public bool DaAn { get; set; }
         public string MaGiaoViens { get; set; }
         public GiaoVien GiaoViens { get; set; }
     }
