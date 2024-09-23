@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Preschool-Nutrition/1.0.0": {
+        "runtime": {
+          "Preschool-Nutrition.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Preschool-Nutrition/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

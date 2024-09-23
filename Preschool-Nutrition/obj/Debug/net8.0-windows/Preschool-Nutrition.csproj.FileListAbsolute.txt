@@ -1,0 +1,16 @@
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-windows\Preschool-Nutrition.exe
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-windows\Preschool-Nutrition.deps.json
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-windows\Preschool-Nutrition.runtimeconfig.json
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-windows\Preschool-Nutrition.dll
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-windows\Preschool-Nutrition.pdb
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.MainForm.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.csproj.GenerateResource.cache
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.AssemblyInfoInputs.cache
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.AssemblyInfo.cs
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.csproj.CoreCompileInputs.cache
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.dll
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\refint\Preschool-Nutrition.dll
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.pdb
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.genruntimeconfig.cache
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\ref\Preschool-Nutrition.dll
