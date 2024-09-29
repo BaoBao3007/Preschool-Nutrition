@@ -15,6 +15,12 @@ namespace Preschool_Nutrition.Views
         public MainForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Size = new Size(1600, 900);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimumSize = new Size(1600, 900);
+            this.MaximumSize = new Size(1600, 900);
         }
     }
 }
