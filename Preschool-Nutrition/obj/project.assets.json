@@ -1607,19 +1607,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bao\\.nuget\\packages\\": {}
+    "C:\\Users\\nguye\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
+      "projectUniqueName": "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
       "projectName": "Preschool-Nutrition",
-      "projectPath": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
-      "packagesPath": "C:\\Users\\Bao\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\obj\\",
+      "projectPath": "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Bao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1627,8 +1627,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://packagesource": {}
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -1675,7 +1675,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
