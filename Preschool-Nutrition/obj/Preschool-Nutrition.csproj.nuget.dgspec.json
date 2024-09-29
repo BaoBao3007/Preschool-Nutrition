@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {}
+    "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {}
   },
   "projects": {
-    "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {
+    "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
+        "projectUniqueName": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
         "projectName": "Preschool-Nutrition",
-        "projectPath": "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
-        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "D:\\DoAn\\Preschool-Nutrition\\Preschool-Nutrition\\obj\\",
+        "projectPath": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
+        "packagesPath": "C:\\Users\\Bao\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bao\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +69,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
