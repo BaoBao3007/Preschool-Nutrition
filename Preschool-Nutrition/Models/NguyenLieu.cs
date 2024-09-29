@@ -14,6 +14,7 @@ namespace Preschool_Nutrition.Models
         public float Gia { get; set; }
         public string LoaiNguyenLieu { get; set; }
         public float SoLuongTonKho { get; set; }
+        public float Calo { get; set; }
 
         public ICollection<NguyenLieuMonAn> NguyenLieuMonAns { get; set; }
         public ICollection<ChiTietPhieuKeCho> ChiTietPhieuKeChos { get; set; }

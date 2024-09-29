@@ -10,7 +10,6 @@ namespace Preschool_Nutrition.Models
     {
         public string MaMonAn { get; set; }
         public string MaNguyenLieu { get; set; }
-        public float Calo { get; set; }
         public string DVT { get; set; }
         public string GhiChu { get; set; }
 

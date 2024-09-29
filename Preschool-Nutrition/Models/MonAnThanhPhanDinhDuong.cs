@@ -10,7 +10,7 @@ namespace Preschool_Nutrition.Models
     {
         public string MaMonAn { get; set; }
         public string MaThanhPhan { get; set; }
-        public float KhoiLuong { get; set; }
+        public float HamLuongDinhDuong { get; set; }
 
         // Khóa ngoại
         public MonAn MonAns { get; set; }
