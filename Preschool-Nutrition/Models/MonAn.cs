@@ -16,7 +16,6 @@ namespace Preschool_Nutrition.Models
 
         public ICollection<ChiTietThucDon> ChiTietThucDons { get; set; }
         public ICollection<NguyenLieuMonAn> NguyenLieuMonAns { get; set; }
-        public ICollection<ThanhPhanMonAn> ThanhPhanMonAns { get; set; }
         public ICollection<HocSinhDiUng> HocSinhDiUngs { get; set; }
     }
 
