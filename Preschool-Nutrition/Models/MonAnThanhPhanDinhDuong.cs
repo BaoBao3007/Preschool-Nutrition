@@ -8,8 +8,8 @@ namespace Preschool_Nutrition.Models
 {
     public class MonAnThanhPhanDinhDuong
     {
-        public string MaMonAn { get; set; }
-        public string MaThanhPhan { get; set; }
+        public int MaMonAn { get; set; }
+        public int MaThanhPhan { get; set; }
         public float HamLuongDinhDuong { get; set; }
 
         // Khóa ngoại

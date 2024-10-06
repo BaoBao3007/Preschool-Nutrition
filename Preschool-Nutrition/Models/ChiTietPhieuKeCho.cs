@@ -8,8 +8,8 @@ namespace Preschool_Nutrition.Models
 {
     public class ChiTietPhieuKeCho
     {
-        public string MaPhieuKeCho { get; set; }
-        public string MaNguyenLieu { get; set; }
+        public int MaPhieuKeCho { get; set; }
+        public int MaNguyenLieu { get; set; }
         public int SoLuong { get; set; }
         public float Gia { get; set; }
 

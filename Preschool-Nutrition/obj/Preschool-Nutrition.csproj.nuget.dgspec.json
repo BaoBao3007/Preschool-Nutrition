@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DoAnChuyenNganh\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {}
+    "D:\\DACN\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {}
   },
   "projects": {
-    "D:\\DoAnChuyenNganh\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {
+    "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DoAnChuyenNganh\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
+        "projectUniqueName": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
         "projectName": "Preschool-Nutrition",
-        "projectPath": "D:\\DoAnChuyenNganh\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
-        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DoAnChuyenNganh\\Preschool-Nutrition\\Preschool-Nutrition\\obj\\",
+        "projectPath": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\Preschool-Nutrition.csproj",
+        "packagesPath": "C:\\Users\\Bao\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bao\\Desktop\\Preschool-Nutrition\\Preschool-Nutrition\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\ud\\Components\\Offline Packages",
