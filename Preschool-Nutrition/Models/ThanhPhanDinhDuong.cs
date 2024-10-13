@@ -8,7 +8,7 @@ namespace Preschool_Nutrition.Models
 {
     public class ThanhPhanDinhDuong
     {
-        public string MaThanhPhan { get; set; }
+        public int MaThanhPhan { get; set; }
         public string TenThanhPhan { get; set; }
         public string DonVi { get; set; }
         public ICollection<MonAnThanhPhanDinhDuong> MonAnThanhPhanDinhDuongs { get; set; }

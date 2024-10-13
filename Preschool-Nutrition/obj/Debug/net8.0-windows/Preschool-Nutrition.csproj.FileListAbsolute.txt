@@ -63,3 +63,7 @@ D:\DoAn\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\refint\
 D:\DoAn\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.pdb
 D:\DoAn\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.genruntimeconfig.cache
 D:\DoAn\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\ref\Preschool-Nutrition.dll
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmNguyenLieu.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Properties.Resources.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmGiaoVien.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmLopHoc.resources

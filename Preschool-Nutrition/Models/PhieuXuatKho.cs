@@ -8,7 +8,7 @@ namespace Preschool_Nutrition.Models
 {
     public class PhieuXuatKho
     {
-        public string MaPhieuXuat { get; set; }
+        public int MaPhieuXuat { get; set; }
         public DateTime NgayXuat { get; set; }
 
         public string MaNhanVien { get; set; }
