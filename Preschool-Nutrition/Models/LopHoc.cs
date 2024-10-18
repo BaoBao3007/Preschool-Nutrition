@@ -13,6 +13,7 @@ namespace Preschool_Nutrition.Models
         public string NamHoc { get; set; }
 
         public int MaGiaoVienChuNhiem { get; set; }
+        public string HoTenGiaoVienChuNhiem { get; set; }
         public GiaoVien GiaoVienChuNhiems { get; set; }
 
         public ICollection<HocSinh> HocSinhs { get; set; }

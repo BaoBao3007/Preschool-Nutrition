@@ -11,6 +11,7 @@ namespace Preschool_Nutrition.Models
         public int MaMonAn { get; set; }
         public int MaNguyenLieu { get; set; }
         public string DVT { get; set; }
+        public float KhoiLuong { get; set; }
         public string GhiChu { get; set; }
 
         public MonAn MonAns { get; set; }  // Relationship reference

@@ -32,16 +32,16 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBoxTenLopHoc = new TextBox();
-            textBoxNamHoc = new TextBox();
-            comboBoxGV = new ComboBox();
-            dataGridView1 = new DataGridView();
+            txt_tenlophoc = new TextBox();
+            txt_namhoc = new TextBox();
+            cbo_gv = new ComboBox();
+            dgv_lophoc = new DataGridView();
             button1 = new Button();
             btn_them = new Button();
             btn_thoat = new Button();
             btn_capnhat = new Button();
             btn_xoa = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_lophoc).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -49,69 +49,68 @@
             label1.AutoSize = true;
             label1.Location = new Point(574, 33);
             label1.Name = "label1";
-            label1.Size = new Size(59, 25);
+            label1.Size = new Size(159, 25);
             label1.TabIndex = 0;
-            label1.Text = "label1";
+            label1.Text = "Danh sách lớp học";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(146, 68);
+            label2.Location = new Point(142, 65);
             label2.Name = "label2";
-            label2.Size = new Size(110, 25);
+            label2.Size = new Size(114, 25);
             label2.TabIndex = 1;
-            label2.Text = "Tên Lớp Học";
+            label2.Text = "Tên Lớp Học:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(159, 143);
+            label3.Location = new Point(165, 143);
             label3.Name = "label3";
-            label3.Size = new Size(87, 25);
+            label3.Size = new Size(91, 25);
             label3.TabIndex = 2;
-            label3.Text = "Năm Học";
+            label3.Text = "Năm Học:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(67, 221);
+            label4.Location = new Point(72, 221);
             label4.Name = "label4";
-            label4.Size = new Size(179, 25);
+            label4.Size = new Size(184, 25);
             label4.TabIndex = 3;
-            label4.Text = "Giáo Viên Phân Công";
+            label4.Text = "Giáo Viên Chủ Nhiệm:";
             // 
-            // textBoxTenLopHoc
+            // txt_tenlophoc
             // 
-            textBoxTenLopHoc.Location = new Point(262, 62);
-            textBoxTenLopHoc.Name = "textBoxTenLopHoc";
-            textBoxTenLopHoc.Size = new Size(229, 31);
-            textBoxTenLopHoc.TabIndex = 4;
+            txt_tenlophoc.Location = new Point(262, 62);
+            txt_tenlophoc.Name = "txt_tenlophoc";
+            txt_tenlophoc.Size = new Size(229, 31);
+            txt_tenlophoc.TabIndex = 4;
             // 
-            // textBoxNamHoc
+            // txt_namhoc
             // 
-            textBoxNamHoc.Location = new Point(262, 143);
-            textBoxNamHoc.Name = "textBoxNamHoc";
-            textBoxNamHoc.Size = new Size(229, 31);
-            textBoxNamHoc.TabIndex = 5;
+            txt_namhoc.Location = new Point(262, 143);
+            txt_namhoc.Name = "txt_namhoc";
+            txt_namhoc.Size = new Size(229, 31);
+            txt_namhoc.TabIndex = 5;
             // 
-            // comboBoxGV
+            // cbo_gv
             // 
-            comboBoxGV.FormattingEnabled = true;
-            comboBoxGV.Location = new Point(262, 218);
-            comboBoxGV.Name = "comboBoxGV";
-            comboBoxGV.Size = new Size(229, 33);
-            comboBoxGV.TabIndex = 6;
-            comboBoxGV.SelectedIndexChanged += comboBoxGV_SelectedIndexChanged;
+            cbo_gv.FormattingEnabled = true;
+            cbo_gv.Location = new Point(262, 218);
+            cbo_gv.Name = "cbo_gv";
+            cbo_gv.Size = new Size(229, 33);
+            cbo_gv.TabIndex = 6;
             // 
-            // dataGridView1
+            // dgv_lophoc
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(574, 68);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(606, 240);
-            dataGridView1.TabIndex = 7;
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            dgv_lophoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_lophoc.Location = new Point(574, 68);
+            dgv_lophoc.Name = "dgv_lophoc";
+            dgv_lophoc.RowHeadersWidth = 62;
+            dgv_lophoc.Size = new Size(606, 240);
+            dgv_lophoc.TabIndex = 7;
+            dgv_lophoc.CellClick += dgv_lophoc_CellClick;
             // 
             // button1
             // 
@@ -150,6 +149,7 @@
             btn_capnhat.TabIndex = 28;
             btn_capnhat.Text = "Cập nhật";
             btn_capnhat.UseVisualStyleBackColor = true;
+            btn_capnhat.Click += btn_capnhat_Click;
             // 
             // btn_xoa
             // 
@@ -171,17 +171,17 @@
             Controls.Add(btn_thoat);
             Controls.Add(btn_capnhat);
             Controls.Add(btn_xoa);
-            Controls.Add(dataGridView1);
-            Controls.Add(comboBoxGV);
-            Controls.Add(textBoxNamHoc);
-            Controls.Add(textBoxTenLopHoc);
+            Controls.Add(dgv_lophoc);
+            Controls.Add(cbo_gv);
+            Controls.Add(txt_namhoc);
+            Controls.Add(txt_tenlophoc);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FrmLopHoc";
             Text = "FrmLopHoc";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_lophoc).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,10 +192,10 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBoxTenLopHoc;
-        private TextBox textBoxNamHoc;
-        private ComboBox comboBoxGV;
-        private DataGridView dataGridView1;
+        private TextBox txt_tenlophoc;
+        private TextBox txt_namhoc;
+        private ComboBox cbo_gv;
+        private DataGridView dgv_lophoc;
         private Button button1;
         private Button btn_them;
         private Button btn_thoat;

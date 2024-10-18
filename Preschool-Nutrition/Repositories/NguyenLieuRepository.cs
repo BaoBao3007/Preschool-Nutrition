@@ -16,14 +16,12 @@ namespace Preschool_Nutrition.Repositories
         {
             using (var connection = DatabaseHelper.GetConnection())
             {
-                string query = "INSERT INTO NguyenLieu (TenNguyenLieu, DonViTinh, Gia, LoaiNguyenLieu, Calo) VALUES (@TenNguyenLieu, @DonViTinh, @Gia, @LoaiNguyenLieu, @Calo)";
+                string query = "INSERT INTO NguyenLieu (TenNguyenLieu, DonViTinh, LoaiNguyenLieu) VALUES (@TenNguyenLieu, @DonViTinh, @LoaiNguyenLieu)";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@TenNguyenLieu", nguyenLieu.TenNguyenLieu);
                 cmd.Parameters.AddWithValue("@DonViTinh", nguyenLieu.DonViTinh);
-                cmd.Parameters.AddWithValue("@Gia", nguyenLieu.Gia);
                 cmd.Parameters.AddWithValue("@LoaiNguyenLieu", nguyenLieu.LoaiNguyenLieu);
                 cmd.Parameters.AddWithValue("@SoLuongTonKho", nguyenLieu.SoLuongTonKho);
-                cmd.Parameters.AddWithValue("@Calo", nguyenLieu.Calo);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -31,14 +29,12 @@ namespace Preschool_Nutrition.Repositories
         {
             using (var connection = DatabaseHelper.GetConnection())
             {
-                string query = "UPDATE NguyenLieu SET TenNguyenLieu = @TenNguyenLieu, DonViTinh = @DonViTinh, Gia = @Gia, LoaiNguyenLieu = @LoaiNguyenLieu, Calo = @Calo WHERE MaNguyenLieu = @MaNguyenLieu";
+                string query = "UPDATE NguyenLieu SET TenNguyenLieu = @TenNguyenLieu, DonViTinh = @DonViTinh, LoaiNguyenLieu = @LoaiNguyenLieu WHERE MaNguyenLieu = @MaNguyenLieu";
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@MaNguyenLieu", nguyenLieu.MaNguyenLieu);
                 cmd.Parameters.AddWithValue("@TenNguyenLieu", nguyenLieu.TenNguyenLieu);
                 cmd.Parameters.AddWithValue("@DonViTinh", nguyenLieu.DonViTinh);
-                cmd.Parameters.AddWithValue("@Gia", nguyenLieu.Gia);
                 cmd.Parameters.AddWithValue("@LoaiNguyenLieu", nguyenLieu.LoaiNguyenLieu);
-                cmd.Parameters.AddWithValue("@Calo", nguyenLieu.Calo);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -68,10 +64,8 @@ namespace Preschool_Nutrition.Repositories
                             MaNguyenLieu = reader.IsDBNull("MaNguyenLieu") ? 0 : reader.GetInt32("MaNguyenLieu"),
                             TenNguyenLieu = reader.IsDBNull("TenNguyenLieu") ? string.Empty : reader.GetString("TenNguyenLieu"),
                             DonViTinh = reader.IsDBNull("DonViTinh") ? string.Empty : reader.GetString("DonViTinh"),
-                            Gia = reader.IsDBNull("Gia") ? 0 : reader.GetFloat("Gia"),
                             LoaiNguyenLieu = reader.IsDBNull("LoaiNguyenLieu") ? string.Empty : reader.GetString("LoaiNguyenLieu"),
                             SoLuongTonKho = reader.IsDBNull("SoLuongTonKho") ? 0 : reader.GetInt32("SoLuongTonKho"),
-                            Calo = reader.IsDBNull("Calo") ? 0 : reader.GetInt32("Calo")
                         });
                     }
                 }
@@ -96,10 +90,8 @@ namespace Preschool_Nutrition.Repositories
                             MaNguyenLieu = reader.IsDBNull("MaNguyenLieu") ? 0 : reader.GetInt32("MaNguyenLieu"),
                             TenNguyenLieu = reader.IsDBNull("TenNguyenLieu") ? string.Empty : reader.GetString("TenNguyenLieu"),
                             DonViTinh = reader.IsDBNull("DonViTinh") ? string.Empty : reader.GetString("DonViTinh"),
-                            Gia = reader.IsDBNull("Gia") ? 0 : reader.GetFloat("Gia"),
                             LoaiNguyenLieu = reader.IsDBNull("LoaiNguyenLieu") ? string.Empty : reader.GetString("LoaiNguyenLieu"),
                             SoLuongTonKho = reader.IsDBNull("SoLuongTonKho") ? 0 : reader.GetInt32("SoLuongTonKho"),
-                            Calo = reader.IsDBNull("Calo") ? 0 : reader.GetInt32("Calo")
                         });
                     }
                 }

@@ -4,6 +4,12 @@
     <Compile Update="Views\FrmGiaoVien.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\FrmHocSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\FrmLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>

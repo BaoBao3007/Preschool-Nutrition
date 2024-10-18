@@ -14,6 +14,8 @@ namespace Preschool_Nutrition.Models
         public string GioiTinh { get; set; }
 
         public int MaLopHoc { get; set; }
+        public string DiaChi { get; set; }
+        public string DienThoaiPhuHuynh { get; set; }
         public LopHoc LopHoc { get; set; }
 
         public ICollection<DiemDanhBaoAn> DiemDanhs { get; set; }

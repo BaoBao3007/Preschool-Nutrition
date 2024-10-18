@@ -12,6 +12,7 @@ namespace Preschool_Nutrition.Views
 {
     public partial class MainForm : Form
     {
+        private Button currentButton;
         public MainForm()
         {
             InitializeComponent();
@@ -21,6 +22,84 @@ namespace Preschool_Nutrition.Views
             this.MaximizeBox = false;
             this.MinimumSize = new Size(1600, 900);
             this.MaximumSize = new Size(1600, 900);
+            panelLeft.Dock = DockStyle.Left;
+            panelLeft.Width = 349;
+            panelRight.Dock = DockStyle.Fill;
+            AddSetUpButton();
+
+        }
+        private void OpenChildForm(Form childForm)
+        {
+            if (panelRight.Controls.Count > 0)
+                panelRight.Controls[0].Dispose();
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelRight.Controls.Add(childForm);
+            panelRight.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+        private void SetupButton(Button button)
+        {
+            button.FlatStyle = FlatStyle.Flat;
+            button.ForeColor = Color.White;
+            button.FlatAppearance.BorderSize = 0;
+            //button.MouseEnter += (s, e) => button.BackColor = Color.DarkSlateBlue;
+            button.MouseEnter += (s, e) => button.BackColor = Color.FromArgb(50, 150, 250);
+            button.MouseLeave += (s, e) =>
+            {
+                button.BackColor = (button == currentButton) ? Color.DarkSlateBlue : panelLeft.BackColor;
+            };
+            button.Click += (s, e) => HighlightButton(button); 
+        }
+
+        private void HighlightButton(Button button)
+        {
+            if (currentButton != null)
+            {
+                currentButton.BackColor = panelLeft.BackColor;
+            }
+
+            currentButton = button; 
+            button.BackColor = Color.DarkSlateBlue; 
+        }
+        private void AddSetUpButton()
+        {
+            SetupButton(btn_gv);
+            SetupButton(btn_hs);
+            SetupButton(btn_monan);
+            SetupButton(btn_nguyenlieu);
+            SetupButton(btn_lophoc);
+        }
+        private void btn_lophoc_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmLopHoc());
+            HighlightButton(btn_lophoc);
+        }
+
+        private void btn_gv_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmGiaoVien());
+            HighlightButton(btn_gv);
+        }
+
+        private void btn_nguyenlieu_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmNguyenLieu());
+            HighlightButton(btn_nguyenlieu);
+        }
+
+        private void btn_monan_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmMonAn());
+            HighlightButton(btn_monan);
+        }
+
+        private void btn_hs_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmHocSinh());
+            HighlightButton(btn_hs);
         }
     }
 }

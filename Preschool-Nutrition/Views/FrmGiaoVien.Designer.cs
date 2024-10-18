@@ -271,7 +271,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 674);
+            ClientSize = new Size(1041, 674);
             Controls.Add(button1);
             Controls.Add(comboBoxChucVu);
             Controls.Add(gb_gt);

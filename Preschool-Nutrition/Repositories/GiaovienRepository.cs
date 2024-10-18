@@ -54,34 +54,25 @@ namespace Preschool_Nutrition.Repositories
                 }
             
         }
-        public List<GiaoVien> GetAllMTGiaoVien()
+        public List<GiaoVien> GetAllHoTenGiaoVien()
         {
-            List<GiaoVien> danhSachGiaoVien = new List<GiaoVien>();
-
-
+            List<GiaoVien> giaoVienList = new List<GiaoVien>();
             using (var connection = DatabaseHelper.GetConnection())
             {
-                string query = "SELECT MaGiaoVien, HoTen FROM GiaoVien"; 
-                
+                string query = "SELECT MaGiaoVien, HoTen FROM GiaoVien";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataReader reader = command.ExecuteReader();
 
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                while (reader.Read())
                 {
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    giaoVienList.Add(new GiaoVien
                     {
-                        while (reader.Read())
-                        {
-                            GiaoVien giaoVien = new GiaoVien
-                            {
-                                MaGiaoVien = reader.GetInt32("MaGiaoVien"),
-                                HoTen = reader["HoTen"].ToString()
-                            };
-                            danhSachGiaoVien.Add(giaoVien);
-                        }
-                    }
+                        MaGiaoVien = (int)reader["MaGiaoVien"],
+                        HoTen = reader["HoTen"].ToString()
+                    });
                 }
             }
-
-            return danhSachGiaoVien;
+            return giaoVienList;
         }
         public List<GiaoVien> GetAllGiaoVien()
         {

@@ -13,6 +13,7 @@ namespace Preschool_Nutrition.Models
         public string LoaiMonAn { get; set; }
         public float Calo { get; set; }
         public string GhiChu { get; set; }
+        public string Buoi { get; set; }
 
         public ICollection<ChiTietThucDon> ChiTietThucDons { get; set; }
         public ICollection<NguyenLieuMonAn> NguyenLieuMonAns { get; set; }

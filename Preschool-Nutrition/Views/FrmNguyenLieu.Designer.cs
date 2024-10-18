@@ -31,13 +31,10 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
             txt_tenNL = new TextBox();
             cbo_loaiNL = new ComboBox();
             cbo_dvt = new ComboBox();
-            txt_gia = new TextBox();
             groupBox1 = new GroupBox();
             txt_slt = new TextBox();
             label7 = new Label();
@@ -45,7 +42,6 @@
             btn_sua = new Button();
             btn_xoa = new Button();
             btn_them = new Button();
-            txt_calo = new TextBox();
             groupBox2 = new GroupBox();
             txt_timkiem = new TextBox();
             btn_timkiem = new Button();
@@ -78,20 +74,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(64, 195);
+            label3.Location = new Point(30, 143);
             label3.Name = "label3";
             label3.Size = new Size(103, 25);
             label3.TabIndex = 2;
             label3.Text = "Đơn vị tính:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(507, 195);
-            label4.Name = "label4";
-            label4.Size = new Size(41, 25);
-            label4.TabIndex = 3;
-            label4.Text = "Giá:";
             // 
             // label5
             // 
@@ -101,15 +88,6 @@
             label5.Size = new Size(144, 25);
             label5.TabIndex = 4;
             label5.Text = "Loại nguyên liệu:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(30, 171);
-            label6.Name = "label6";
-            label6.Size = new Size(51, 25);
-            label6.TabIndex = 5;
-            label6.Text = "Calo:";
             // 
             // txt_tenNL
             // 
@@ -129,29 +107,21 @@
             // cbo_dvt
             // 
             cbo_dvt.FormattingEnabled = true;
-            cbo_dvt.Location = new Point(223, 192);
+            cbo_dvt.Location = new Point(189, 140);
             cbo_dvt.Name = "cbo_dvt";
             cbo_dvt.Size = new Size(218, 33);
             cbo_dvt.TabIndex = 8;
             // 
-            // txt_gia
-            // 
-            txt_gia.Location = new Point(653, 106);
-            txt_gia.Name = "txt_gia";
-            txt_gia.Size = new Size(228, 31);
-            txt_gia.TabIndex = 9;
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(txt_slt);
+            groupBox1.Controls.Add(cbo_dvt);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(btn_lammoi);
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(btn_sua);
             groupBox1.Controls.Add(btn_xoa);
             groupBox1.Controls.Add(btn_them);
-            groupBox1.Controls.Add(txt_calo);
-            groupBox1.Controls.Add(txt_gia);
-            groupBox1.Controls.Add(label6);
             groupBox1.Location = new Point(34, 86);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(956, 308);
@@ -162,7 +132,7 @@
             // txt_slt
             // 
             txt_slt.Enabled = false;
-            txt_slt.Location = new Point(653, 168);
+            txt_slt.Location = new Point(653, 140);
             txt_slt.Name = "txt_slt";
             txt_slt.Size = new Size(228, 31);
             txt_slt.TabIndex = 16;
@@ -170,7 +140,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(473, 171);
+            label7.Location = new Point(473, 143);
             label7.Name = "label7";
             label7.Size = new Size(156, 25);
             label7.TabIndex = 15;
@@ -216,13 +186,6 @@
             btn_them.UseVisualStyleBackColor = true;
             btn_them.Click += btn_them_Click;
             // 
-            // txt_calo
-            // 
-            txt_calo.Location = new Point(189, 168);
-            txt_calo.Name = "txt_calo";
-            txt_calo.Size = new Size(218, 31);
-            txt_calo.TabIndex = 10;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(txt_timkiem);
@@ -259,7 +222,7 @@
             dgv_nguyenlieu.Location = new Point(6, 98);
             dgv_nguyenlieu.Name = "dgv_nguyenlieu";
             dgv_nguyenlieu.RowHeadersWidth = 62;
-            dgv_nguyenlieu.Size = new Size(944, 263);
+            dgv_nguyenlieu.Size = new Size(927, 263);
             dgv_nguyenlieu.TabIndex = 0;
             dgv_nguyenlieu.CellClick += dgv_nguyenlieu_CellClick;
             // 
@@ -269,12 +232,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1002, 844);
             Controls.Add(groupBox2);
-            Controls.Add(cbo_dvt);
             Controls.Add(cbo_loaiNL);
             Controls.Add(txt_tenNL);
             Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(groupBox1);
@@ -294,15 +254,11 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
         private Label label5;
-        private Label label6;
         private TextBox txt_tenNL;
         private ComboBox cbo_loaiNL;
         private ComboBox cbo_dvt;
-        private TextBox txt_gia;
         private GroupBox groupBox1;
-        private TextBox txt_calo;
         private Button btn_lammoi;
         private Button btn_sua;
         private Button btn_xoa;

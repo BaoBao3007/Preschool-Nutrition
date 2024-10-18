@@ -1,4 +1,5 @@
-﻿using Preschool_Nutrition.Models;
+﻿using Preschool_Nutrition.Controllers;
+using Preschool_Nutrition.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,193 +10,146 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Preschool_Nutrition.Repositories;
-using System.Collections.Generic; // Để sử dụng List<T>
+using System.Collections.Generic;
 
 
 namespace Preschool_Nutrition.Views
 {
     public partial class FrmLopHoc : Form
     {
-        private List<GiaoVien> dsGiaoVien;
-        private List<LopHoc> dsLopHoc;
-        private GiaoVienRepository giaoVienRepository;
-        private lopHocRepository lopHocRepository;
-
+        private LopHocController lopHocController;
+        private GiaoVienController giaoVienController;
         public FrmLopHoc()
         {
             InitializeComponent();
-            giaoVienRepository = new GiaoVienRepository();
-            lopHocRepository = new lopHocRepository();
-            dsGiaoVien = new List<GiaoVien>();
-            dsLopHoc = new List<LopHoc>();
-
-            LoadGiaoVienData();
-            LoadLopHocData();
-            //InitializeComboBox();
+            lopHocController = new LopHocController();
+            giaoVienController = new GiaoVienController();
+            LoadCboGiaoVien();
+            LoadData();
         }
-
-        private void InitializeComboBox()
+        private void LoadCboGiaoVien()
         {
-           
-            List<string> dsChucVu = new List<string>
-            {
-                "Giáo viên chủ nhiệm",
-                "Giáo viên bộ môn",
-                "Tổ trưởng",
-                "Hiệu trưởng",
-                "Phó hiệu trưởng"
-            };
-
-            comboBoxGV.DataSource = dsChucVu;
-            comboBoxGV.SelectedIndex = 0; 
+            var danhSachGiaoVien = giaoVienController.GetAllHoTenGiaoVien();
+            cbo_gv.DataSource = danhSachGiaoVien;
+            cbo_gv.DisplayMember = "HoTen";
+            cbo_gv.ValueMember = "MaGiaoVien";
+            cbo_gv.SelectedIndex = -1;
         }
-
-        private void LoadGiaoVienData()
+        private void LoadData()
         {
-            try
-            {
-         
-                dsGiaoVien = giaoVienRepository.GetAllGiaoVien();
-
-                if (dsGiaoVien.Count == 0)
-                {
-                    MessageBox.Show("Không có dữ liệu giáo viên để hiển thị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-           
-                comboBoxGV.DataSource = dsGiaoVien;
-                comboBoxGV.DisplayMember = "HoTen";
-                comboBoxGV.ValueMember = "MaGiaoVien"; 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải dữ liệu giáo viên: {ex.Message}", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            var lopHocs = lopHocController.GetAllLopHoc();
+            dgv_lophoc.DataSource = null;
+            dgv_lophoc.DataSource = lopHocs;
+            dgv_lophoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_lophoc.Columns["MaGiaoVienChuNhiem"].Visible = false;
+            dgv_lophoc.Columns["MaLopHoc"].Visible = false;
+            dgv_lophoc.Columns["GiaoVienChuNhiems"].Visible = false;
+            dgv_lophoc.Columns["HocSinhs"].Visible = false;
+            dgv_lophoc.Columns["TenLopHoc"].HeaderText = "Tên lớp học";
+            dgv_lophoc.Columns["NamHoc"].HeaderText = "Năm học";
+            dgv_lophoc.Columns["HoTenGiaoVienChuNhiem"].HeaderText = "Giáo viên chủ nhiệm";
         }
-
-
-        private void LoadLopHocData()
-        {
-            try
-            {
-                
-                dsLopHoc = lopHocRepository.GetAllLopHoc();
-
-                if (dsLopHoc.Count == 0)
-                {
-                    MessageBox.Show("Không có dữ liệu lớp học để hiển thị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-            
-                var lopHocData = dsLopHoc.Select(lh => new
-                {
-                    TenLopHoc = lh.TenLopHoc,
-                    NamHoc = lh.NamHoc,
-                    MaGiaoVienChuNhiem = lh.MaGiaoVienChuNhiem,
-                    GiaoVien = dsGiaoVien.FirstOrDefault(gv => gv.MaGiaoVien == lh.MaGiaoVienChuNhiem)?.HoTen 
-                }).ToList();
-
-          
-                dataGridView1.DataSource = lopHocData;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải dữ liệu lớp học: {ex.Message}", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
         private void btn_them_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(txt_tenlophoc.Text) || string.IsNullOrWhiteSpace(txt_namhoc.Text) || cbo_gv.SelectedValue == null)
             {
-                if (string.IsNullOrEmpty(textBoxTenLopHoc.Text) ||
-                    string.IsNullOrEmpty(textBoxNamHoc.Text))
-                {
-                    MessageBox.Show("Vui lòng nhập đủ thông tin lớp học.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                string errorMessage =
+                    string.IsNullOrWhiteSpace(txt_tenlophoc.Text) ? "Tên lớp học không được để trống!" :
+                    string.IsNullOrWhiteSpace(txt_namhoc.Text) ? "Năm học không được để trống!" :
+                    "Vui lòng chọn giáo viên chủ nhiệm!";
 
-                LopHoc newLop = new LopHoc
-                {
-                    TenLopHoc = textBoxTenLopHoc.Text,
-                    NamHoc = textBoxNamHoc.Text,
-                    MaGiaoVienChuNhiem = (int)comboBoxGV.SelectedValue 
-                };
-
-                lopHocRepository.AddLopHoc(newLop);
-                MessageBox.Show("Thêm lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                LoadLopHocData(); 
-                ClearFormFields();
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (ArgumentException ex)
+            var lopHoc = new LopHoc
             {
-                MessageBox.Show(ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                TenLopHoc = txt_tenlophoc.Text,
+                NamHoc = txt_namhoc.Text,
+                MaGiaoVienChuNhiem = (int)cbo_gv.SelectedValue
+            };
+            lopHocController.AddLopHoc(lopHoc);
+            MessageBox.Show("Thêm lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadData();
         }
 
-
-        private void btn_xoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Xác nhận xóa lớp học
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa lớp học này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-
-                string tenLopHoc = textBoxTenLopHoc.Text;
-
-                lopHocRepository.DeleteLopHocByTen(tenLopHoc);
-                MessageBox.Show("Xóa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                LoadLopHocData(); // Tải lại dữ liệu sau khi xóa
-                ClearFormFields(); // Xóa các trường nhập liệu
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ClearFormFields()
-        {
-            textBoxTenLopHoc.Clear();
-            textBoxNamHoc.Clear();
-            comboBoxGV.SelectedIndex = 0; 
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_lophoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                var selectedRow = dataGridView1.Rows[e.RowIndex];
-                textBoxTenLopHoc.Text = selectedRow.Cells["TenLopHoc"].Value.ToString();
-                textBoxNamHoc.Text = selectedRow.Cells["NamHoc"].Value.ToString();
-
-                int maGiaoVien = Convert.ToInt32(selectedRow.Cells["MaGiaoVienChuNhiem"].Value);
-
-                comboBoxGV.SelectedValue = maGiaoVien;
+                var selectedRow = dgv_lophoc.Rows[e.RowIndex];
+                txt_tenlophoc.Text = selectedRow.Cells["TenLopHoc"].Value.ToString();
+                txt_namhoc.Text = selectedRow.Cells["NamHoc"].Value.ToString();
+                cbo_gv.SelectedValue = selectedRow.Cells["MaGiaoVienChuNhiem"].Value;
             }
+        }
+
+        private void btn_capnhat_Click(object sender, EventArgs e)
+        {
+            if (dgv_lophoc.SelectedRows.Count > 0)
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn sửa lớp học này?",
+                                                     "Xác nhận sửa",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    int maLopHoc = (int)dgv_lophoc.SelectedRows[0].Cells["MaLopHoc"].Value;
+                    string tenLopHoc = txt_tenlophoc.Text;
+                    string namHoc = txt_namhoc.Text;
+                    int maGiaoVienChuNhiem = (int)((GiaoVien)cbo_gv.SelectedItem).MaGiaoVien;
+                    var lopHoc = new LopHoc
+                    {
+                        MaLopHoc = maLopHoc,
+                        TenLopHoc = tenLopHoc,
+                        NamHoc = namHoc,
+                        MaGiaoVienChuNhiem = maGiaoVienChuNhiem
+                    };
+
+                    lopHocController.UpdateLopHoc(lopHoc);
+                    LoadData();
+                    MessageBox.Show("Sửa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn lớp học cần sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+            if (dgv_lophoc.SelectedRows.Count > 0)
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa lớp học này?",
+                                                     "Xác nhận xóa",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    int maLopHoc = (int)dgv_lophoc.SelectedRows[0].Cells["MaLopHoc"].Value;
+                    lopHocController.DeleteLopHoc(maLopHoc);
+                    LoadData();
+                    MessageBox.Show("Xóa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn lớp học cần xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btn_thoat_Click(object sender, EventArgs e)
         {
-            this.Close(); 
-        }
-
-        private void comboBoxGV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?",
+                                                 "Xác nhận thoát",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+            if (confirmResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

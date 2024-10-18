@@ -67,3 +67,7 @@ C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-wi
 C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Properties.Resources.resources
 C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmGiaoVien.resources
 C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmLopHoc.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmMonAn.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmHocSinh.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-windows\BCrypt.Net-Next.dll
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmLogin.resources

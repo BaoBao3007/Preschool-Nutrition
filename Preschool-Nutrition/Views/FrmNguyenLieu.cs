@@ -32,7 +32,9 @@ namespace Preschool_Nutrition.Views
         private void loadData()
         {
             var nguyenLieus = controller.GetAllNguyenLieus();
+            dgv_nguyenlieu.DataSource = null;
             dgv_nguyenlieu.DataSource = nguyenLieus;
+            dgv_nguyenlieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (dgv_nguyenlieu.Columns["MaNguyenLieu"] != null)
             {
                 dgv_nguyenlieu.Columns["MaNguyenLieu"].Visible = false;
@@ -43,11 +45,8 @@ namespace Preschool_Nutrition.Views
             }
             dgv_nguyenlieu.Columns["TenNguyenLieu"].HeaderText = "Tên nguyên liệu";
             dgv_nguyenlieu.Columns["DonViTinh"].HeaderText = "Đơn vị tính";
-            dgv_nguyenlieu.Columns["Gia"].HeaderText = "Giá";
             dgv_nguyenlieu.Columns["LoaiNguyenLieu"].HeaderText = "Loại nguyên liệu";
             dgv_nguyenlieu.Columns["SoLuongTonKho"].HeaderText = "Số lương tồn kho";
-            dgv_nguyenlieu.Columns["Calo"].HeaderText = "Calo";
-
         }
         private void loadComboBox()
         {
@@ -66,8 +65,6 @@ namespace Preschool_Nutrition.Views
         private void clearText()
         {
             txt_tenNL.Text = string.Empty;
-            txt_gia.Text = string.Empty;
-            txt_calo.Text = string.Empty;
             txt_slt.Text = string.Empty;
             cbo_dvt.Text = string.Empty;
             cbo_loaiNL.Text = string.Empty;
@@ -78,8 +75,7 @@ namespace Preschool_Nutrition.Views
             try
             {
                 if (string.IsNullOrEmpty(txt_tenNL.Text) || string.IsNullOrEmpty(cbo_dvt.Text) ||
-                    string.IsNullOrEmpty(txt_gia.Text) || string.IsNullOrEmpty(cbo_loaiNL.Text) ||
-                    string.IsNullOrEmpty(txt_calo.Text))
+                   string.IsNullOrEmpty(cbo_loaiNL.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -88,10 +84,9 @@ namespace Preschool_Nutrition.Views
                 {
                     TenNguyenLieu = txt_tenNL.Text,
                     DonViTinh = cbo_dvt.Text,
-                    Gia = float.Parse(txt_gia.Text),
                     LoaiNguyenLieu = cbo_loaiNL.Text,
                     SoLuongTonKho = string.IsNullOrEmpty(txt_slt.Text) ? 0 : float.Parse(txt_slt.Text),
-                    Calo = string.IsNullOrEmpty(txt_calo.Text) ? 0 : float.Parse(txt_calo.Text)
+
                 };
                 controller.AddNguyenLieu(nguyenLieu);
                 loadData();
@@ -145,10 +140,8 @@ namespace Preschool_Nutrition.Views
                             MaNguyenLieu = Convert.ToInt32(dgv_nguyenlieu.SelectedRows[0].Cells["MaNguyenLieu"].Value),
                             TenNguyenLieu = txt_tenNL.Text,
                             DonViTinh = cbo_dvt.Text,
-                            Gia = float.Parse(txt_gia.Text),
                             LoaiNguyenLieu = cbo_loaiNL.Text,
                             SoLuongTonKho = float.Parse(dgv_nguyenlieu.SelectedRows[0].Cells["SoLuongTonKho"].Value.ToString()),
-                            Calo = float.Parse(txt_calo.Text)
                         };
                         controller.UpdateNguyenLieu(nguyenLieu);
                         loadData();
@@ -175,10 +168,8 @@ namespace Preschool_Nutrition.Views
                 DataGridViewRow row = dgv_nguyenlieu.Rows[e.RowIndex];
                 txt_tenNL.Text = row.Cells["TenNguyenLieu"].Value?.ToString();
                 cbo_dvt.Text = row.Cells["DonViTinh"].Value?.ToString();
-                txt_gia.Text = row.Cells["Gia"].Value?.ToString();
                 cbo_loaiNL.Text = row.Cells["LoaiNguyenLieu"].Value?.ToString();
                 txt_slt.Text = row.Cells["SoLuongTonKho"].Value?.ToString();
-                txt_calo.Text = row.Cells["Calo"].Value?.ToString();
             }
         }
 
