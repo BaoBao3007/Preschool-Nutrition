@@ -54,11 +54,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.MenuHighlight;
-            label1.Location = new Point(223, 27);
+            label1.Location = new Point(266, 24);
             label1.Name = "label1";
-            label1.Size = new Size(580, 56);
+            label1.Size = new Size(484, 59);
             label1.TabIndex = 0;
             label1.Text = "QUẢN LÝ NGUYÊN LIỆU";
             // 

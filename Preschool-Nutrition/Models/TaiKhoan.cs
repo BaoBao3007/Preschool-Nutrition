@@ -11,8 +11,9 @@ namespace Preschool_Nutrition.Models
         public int MaTaiKhoan { get; set; } 
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; } 
-        public string LoaiTaiKhoan { get; set; } 
-        public int MaNguoiDung { get; set; } 
+        public string LoaiTaiKhoan { get; set; }
+        public int? MaNhanVien { get; set; } 
+        public int? MaGiaoVien { get; set; }
         public NhanVien NhanVien { get; set; } 
         public GiaoVien GiaoVien { get; set; } 
     }
