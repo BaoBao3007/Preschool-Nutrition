@@ -245,5 +245,30 @@ namespace Preschool_Nutrition.Repositories
                 }
             }
         }
+        public string GetLoaiTaiKhoan(string tenDangNhap)
+        {
+            using (var connection = DatabaseHelper.GetConnection())
+            {
+                string query = "SELECT LoaiTaiKhoan FROM TaiKhoan WHERE TenDangNhap = @TenDangNhap";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
+
+                try
+                {
+                    object result = cmd.ExecuteScalar(); // Lấy kết quả từ câu truy vấn
+                    if (result != null)
+                    {
+                        return result.ToString(); // Trả về loại tài khoản
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu cần thiết (log hoặc ném ra ngoại lệ)
+                    Console.WriteLine("Lỗi khi lấy loại tài khoản: " + ex.Message);
+                }
+            }
+
+            return null; // Trả về null nếu không tìm thấy tên đăng nhập
+        }
     }
 }
