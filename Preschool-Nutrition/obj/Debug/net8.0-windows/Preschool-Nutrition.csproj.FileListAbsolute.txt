@@ -74,3 +74,4 @@ C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\bin\Debug\net8.0-wi
 C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool-Nutrition.genruntimeconfig.cache
 C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\ref\Preschool-Nutrition.dll
 C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmChiTietMonAn_NguyenLieuMonAn.resources
+C:\Users\Bao\Desktop\Preschool-Nutrition\Preschool-Nutrition\obj\Debug\net8.0-windows\Preschool_Nutrition.Views.FrmDiemDanh.resources
