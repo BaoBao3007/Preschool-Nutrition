@@ -98,7 +98,53 @@ namespace Preschool_Nutrition.Repositories
             }
             return nguyenLieus;
         }
+        public List<string> GetAllTenNguyenLieu()
+        {
+            var tenNguyenLieus = new List<string>();
+            using (var connection = DatabaseHelper.GetConnection())
+            {
+                string query = "SELECT DISTINCT TenNguyenLieu FROM NguyenLieu"; // Lấy tên nguyên liệu không trùng
+                MySqlCommand cmd = new MySqlCommand(query, connection);
 
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (!reader.IsDBNull("TenNguyenLieu"))
+                        {
+                            tenNguyenLieus.Add(reader.GetString("TenNguyenLieu"));
+                        }
+                    }
+                }
+            }
+            return tenNguyenLieus;
+        }
+        public string GetDonViTinhByName(string tenNguyenLieu)
+        {
+            using (var connection = DatabaseHelper.GetConnection())
+            {
+                string query = "SELECT DonViTinh FROM NguyenLieu WHERE TenNguyenLieu = @TenNguyenLieu LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenNguyenLieu", tenNguyenLieu);
+
+                object result = cmd.ExecuteScalar();
+                return result != null ? result.ToString() : string.Empty; // Trả về DVT hoặc chuỗi rỗng nếu không tìm thấy
+            }
+        }
+        public int GetMaNguyenLieuByName(string tenNguyenLieu)
+        {
+            using (var connection = DatabaseHelper.GetConnection())
+            {
+                string query = "SELECT MaNguyenLieu FROM NguyenLieu WHERE TenNguyenLieu = @TenNguyenLieu LIMIT 1"; // Chỉ lấy 1 kết quả
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TenNguyenLieu", tenNguyenLieu);
+
+                object result = cmd.ExecuteScalar(); // Lấy giá trị đầu tiên
+
+                // Kiểm tra kết quả và trả về mã nguyên liệu
+                return result != null ? Convert.ToInt32(result) : 0; // Trả về 0 nếu không tìm thấy
+            }
+        }
 
     }
 }

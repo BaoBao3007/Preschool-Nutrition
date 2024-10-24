@@ -39,200 +39,224 @@ namespace Preschool_Nutrition.Views
         private void InitializeComponent()
         {
             dataGridViewMonAn = new DataGridView();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            txtTenMon = new TextBox();
-            txtCalo = new TextBox();
-            txtGhiChu = new TextBox();
-            btnThem = new Button();
-            btnXoa = new Button();
-            btnSua = new Button();
+            groupBox1 = new GroupBox();
             btnTim = new Button();
-            txtLoaiMon = new TextBox();
             txtTim = new TextBox();
+            groupBox3 = new GroupBox();
+            btnThem = new Button();
+            txtGhiChu = new TextBox();
+            cboBuoi = new ComboBox();
+            cboLoaiMon = new ComboBox();
+            txtCalo = new TextBox();
+            txtTenMon = new TextBox();
+            label5 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            btnReload = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMonAn).BeginInit();
+            groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewMonAn
             // 
             dataGridViewMonAn.AllowUserToDeleteRows = false;
             dataGridViewMonAn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMonAn.Location = new Point(108, 61);
+            dataGridViewMonAn.Location = new Point(16, 26);
             dataGridViewMonAn.Name = "dataGridViewMonAn";
             dataGridViewMonAn.RowHeadersWidth = 51;
-            dataGridViewMonAn.Size = new Size(787, 291);
-            dataGridViewMonAn.TabIndex = 0;
-            dataGridViewMonAn.MouseClick += dataGridViewMonAn_MouseClick;
+            dataGridViewMonAn.Size = new Size(861, 359);
+            dataGridViewMonAn.TabIndex = 26;
+            dataGridViewMonAn.MouseClick += dataGridViewMonAn_MouseClick_1;
             // 
-            // label1
+            // groupBox1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(494, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 20);
-            label1.TabIndex = 1;
-            label1.Text = "Món Ăn";
+            groupBox1.Controls.Add(dataGridViewMonAn);
+            groupBox1.Controls.Add(btnTim);
+            groupBox1.Controls.Add(txtTim);
+            groupBox1.Location = new Point(61, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(895, 438);
+            groupBox1.TabIndex = 28;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Món Ăn";
             // 
-            // label2
+            // btnTim
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(108, 389);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Tên Món";
+            btnTim.Location = new Point(559, 404);
+            btnTim.Name = "btnTim";
+            btnTim.Size = new Size(94, 29);
+            btnTim.TabIndex = 24;
+            btnTim.Text = "Tìm";
+            btnTim.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // txtTim
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(484, 393);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 20);
-            label3.TabIndex = 3;
-            label3.Text = "Loại Món";
+            txtTim.Location = new Point(669, 405);
+            txtTim.Name = "txtTim";
+            txtTim.Size = new Size(208, 27);
+            txtTim.TabIndex = 23;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(btnReload);
+            groupBox3.Controls.Add(btnThem);
+            groupBox3.Controls.Add(txtGhiChu);
+            groupBox3.Controls.Add(cboBuoi);
+            groupBox3.Controls.Add(cboLoaiMon);
+            groupBox3.Controls.Add(txtCalo);
+            groupBox3.Controls.Add(txtTenMon);
+            groupBox3.Controls.Add(label5);
+            groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(label4);
+            groupBox3.Controls.Add(label2);
+            groupBox3.Controls.Add(label1);
+            groupBox3.Location = new Point(12, 496);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(991, 189);
+            groupBox3.TabIndex = 30;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Thêm Món Ăn";
+            // 
+            // btnThem
+            // 
+            btnThem.Location = new Point(477, 107);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(94, 29);
+            btnThem.TabIndex = 25;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click_1;
+            // 
+            // txtGhiChu
+            // 
+            txtGhiChu.Location = new Point(113, 107);
+            txtGhiChu.Name = "txtGhiChu";
+            txtGhiChu.Size = new Size(341, 27);
+            txtGhiChu.TabIndex = 22;
+            // 
+            // cboBuoi
+            // 
+            cboBuoi.FormattingEnabled = true;
+            cboBuoi.Location = new Point(816, 54);
+            cboBuoi.Name = "cboBuoi";
+            cboBuoi.Size = new Size(136, 28);
+            cboBuoi.TabIndex = 21;
+            // 
+            // cboLoaiMon
+            // 
+            cboLoaiMon.FormattingEnabled = true;
+            cboLoaiMon.Location = new Point(618, 54);
+            cboLoaiMon.Name = "cboLoaiMon";
+            cboLoaiMon.Size = new Size(136, 28);
+            cboLoaiMon.TabIndex = 20;
+            // 
+            // txtCalo
+            // 
+            txtCalo.Location = new Point(417, 55);
+            txtCalo.Name = "txtCalo";
+            txtCalo.Size = new Size(99, 27);
+            txtCalo.TabIndex = 19;
+            // 
+            // txtTenMon
+            // 
+            txtTenMon.Location = new Point(113, 55);
+            txtTenMon.Name = "txtTenMon";
+            txtTenMon.Size = new Size(233, 27);
+            txtTenMon.TabIndex = 18;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(407, 473);
+            label5.Location = new Point(38, 107);
             label5.Name = "label5";
-            label5.Size = new Size(60, 20);
-            label5.TabIndex = 5;
-            label5.Text = "Ghi Chú";
+            label5.Size = new Size(61, 20);
+            label5.TabIndex = 17;
+            label5.Text = "Ghi chú:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(768, 58);
+            label3.Name = "label3";
+            label3.Size = new Size(42, 20);
+            label3.TabIndex = 16;
+            label3.Text = "Buổi:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(123, 470);
+            label4.Location = new Point(369, 58);
             label4.Name = "label4";
-            label4.Size = new Size(39, 20);
-            label4.TabIndex = 6;
-            label4.Text = "Calo";
-            label4.Click += label4_Click;
+            label4.Size = new Size(42, 20);
+            label4.TabIndex = 15;
+            label4.Text = "Calo:";
             // 
-            // txtTenMon
+            // label2
             // 
-            txtTenMon.Location = new Point(180, 386);
-            txtTenMon.Name = "txtTenMon";
-            txtTenMon.Size = new Size(197, 27);
-            txtTenMon.TabIndex = 8;
+            label2.AutoSize = true;
+            label2.Location = new Point(538, 58);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 20);
+            label2.TabIndex = 14;
+            label2.Text = "Loại Món:";
             // 
-            // txtCalo
+            // label1
             // 
-            txtCalo.Location = new Point(178, 470);
-            txtCalo.Name = "txtCalo";
-            txtCalo.Size = new Size(141, 27);
-            txtCalo.TabIndex = 9;
+            label1.AutoSize = true;
+            label1.Location = new Point(38, 58);
+            label1.Name = "label1";
+            label1.Size = new Size(69, 20);
+            label1.TabIndex = 13;
+            label1.Text = "Tên Món:";
             // 
-            // txtGhiChu
+            // btnReload
             // 
-            txtGhiChu.Location = new Point(484, 473);
-            txtGhiChu.Name = "txtGhiChu";
-            txtGhiChu.Size = new Size(385, 27);
-            txtGhiChu.TabIndex = 10;
-            // 
-            // btnThem
-            // 
-            btnThem.Location = new Point(193, 598);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(94, 29);
-            btnThem.TabIndex = 11;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = true;
-            btnThem.MouseClick += btnThem_MouseClick;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Location = new Point(350, 598);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(94, 29);
-            btnXoa.TabIndex = 12;
-            btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = true;
-            btnXoa.MouseClick += btnXoa_MouseClick;
-            // 
-            // btnSua
-            // 
-            btnSua.Location = new Point(494, 598);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(94, 29);
-            btnSua.TabIndex = 13;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = true;
-            btnSua.MouseClick += btnSua_MouseClick;
-            // 
-            // btnTim
-            // 
-            btnTim.Location = new Point(628, 598);
-            btnTim.Name = "btnTim";
-            btnTim.Size = new Size(94, 29);
-            btnTim.TabIndex = 14;
-            btnTim.Text = "Tìm";
-            btnTim.UseVisualStyleBackColor = true;
-            btnTim.Click += btnTim_Click;
-            btnTim.MouseClick += btnTim_MouseClick;
-            // 
-            // txtLoaiMon
-            // 
-            txtLoaiMon.Location = new Point(561, 389);
-            txtLoaiMon.Name = "txtLoaiMon";
-            txtLoaiMon.Size = new Size(141, 27);
-            txtLoaiMon.TabIndex = 15;
-            // 
-            // txtTim
-            // 
-            txtTim.Location = new Point(743, 600);
-            txtTim.Name = "txtTim";
-            txtTim.Size = new Size(171, 27);
-            txtTim.TabIndex = 16;
+            btnReload.Location = new Point(687, 105);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new Size(108, 31);
+            btnReload.TabIndex = 26;
+            btnReload.Text = "RL";
+            btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
             // 
             // FrmMonAn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1024, 768);
-            Controls.Add(txtTim);
-            Controls.Add(txtLoaiMon);
-            Controls.Add(btnTim);
-            Controls.Add(btnSua);
-            Controls.Add(btnXoa);
-            Controls.Add(btnThem);
-            Controls.Add(txtGhiChu);
-            Controls.Add(txtCalo);
-            Controls.Add(txtTenMon);
-            Controls.Add(label4);
-            Controls.Add(label5);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(dataGridViewMonAn);
+            ClientSize = new Size(1030, 768);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox1);
             Name = "FrmMonAn";
             Text = "FrmMonAn";
             ((System.ComponentModel.ISupportInitialize)dataGridViewMonAn).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
         private DataGridView dataGridViewMonAn;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label5;
-        private Label label4;
-        private TextBox txtTenMon;
-        private TextBox txtCalo;
-        private TextBox txtGhiChu;
+        private GroupBox groupBox1;
+        private GroupBox groupBox3;
         private Button btnThem;
-        private Button btnXoa;
-        private Button btnSua;
         private Button btnTim;
-        private TextBox txtLoaiMon;
         private TextBox txtTim;
+        private TextBox txtGhiChu;
+        private ComboBox cboBuoi;
+        private ComboBox cboLoaiMon;
+        private TextBox txtCalo;
+        private TextBox txtTenMon;
+        private Label label5;
+        private Label label3;
+        private Label label4;
+        private Label label2;
+        private Label label1;
+        private Button btnReload;
     }
 
 }

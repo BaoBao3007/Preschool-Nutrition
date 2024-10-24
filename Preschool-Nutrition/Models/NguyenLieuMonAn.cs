@@ -13,9 +13,10 @@ namespace Preschool_Nutrition.Models
         public string DVT { get; set; }
         public float KhoiLuong { get; set; }
         public string GhiChu { get; set; }
-
+ 
         public MonAn MonAns { get; set; }  // Relationship reference
         public NguyenLieu NguyenLieus { get; set; }  // Relationship reference
+        public string TenNguyenLieu { get; set; } // Thêm thuộc tính này
     }
 
 }

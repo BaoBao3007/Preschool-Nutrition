@@ -21,6 +21,29 @@ namespace Preschool_Nutrition.Views
             InitializeComponent();
             monAnRepository = new MonAnRepository();
             LoadData();  // Gọi hàm tải dữ liệu khi khởi tạo form
+            LoadLoaiMon();
+            LoadBuoi();
+        }
+        private void LoadLoaiMon()
+        {
+            // Thêm các giá trị cố định vào ComboBox
+            cboLoaiMon.Items.Add("Món Chính");
+            cboLoaiMon.Items.Add("Món Canh");
+            cboLoaiMon.Items.Add("Món Phụ");
+            cboLoaiMon.Items.Add("Món Ăn Kèm");
+            cboLoaiMon.Items.Add("Món Ăn Nhẹ");
+
+            cboLoaiMon.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboLoaiMon.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+        private void LoadBuoi()
+        {
+            cboBuoi.Items.Add("Sáng");
+            cboBuoi.Items.Add("Trưa");
+            cboBuoi.Items.Add("Xế");
+
+            cboBuoi.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cboBuoi.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
         private void LoadData()
         {
@@ -64,7 +87,7 @@ namespace Preschool_Nutrition.Views
                 {
                     DataPropertyName = "Calo",
                     HeaderText = "Calo",
-                    Width = 50
+                    Width = 60
                 });
 
                 dataGridViewMonAn.Columns.Add(new DataGridViewTextBoxColumn
@@ -74,7 +97,16 @@ namespace Preschool_Nutrition.Views
                     Width = 380
                 });
 
+                // Thêm cột Buổi
+                dataGridViewMonAn.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Buoi",
+                    HeaderText = "Buổi",
+                    Width = 60  // Điều chỉnh kích thước theo ý muốn
+                });
+
                 // Gán danh sách món ăn cho DataGridView
+
                 dataGridViewMonAn.DataSource = monAnList;
                 dataGridViewMonAn.Columns[0].Visible = false;
             }
@@ -86,173 +118,134 @@ namespace Preschool_Nutrition.Views
 
 
 
+
         private void label4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dataGridViewMonAn_MouseClick(object sender, MouseEventArgs e)
-        {
-            // Kiểm tra xem có hàng nào được chọn không
-            if (dataGridViewMonAn.CurrentRow != null && dataGridViewMonAn.CurrentRow.Index != -1)
-            {
-                //// Kiểm tra chỉ số cột thay vì tên cột để tránh lỗi nếu tên cột không khớp
-                //txtTenMon.Text = dataGridViewMonAn.CurrentRow.Cells[0].Value.ToString();  // Cột 0: Tên Món Ăn
-                //txtLoaiMon.Text = dataGridViewMonAn.CurrentRow.Cells[1].Value.ToString(); // Cột 1: Loại Món Ăn
-                //txtCalo.Text = dataGridViewMonAn.CurrentRow.Cells[2].Value.ToString();    // Cột 2: Calo
-                //txtGhiChu.Text = dataGridViewMonAn.CurrentRow.Cells[3].Value.ToString();  // Cột 3: Ghi Chú
-                // Kiểm tra xem có hàng nào được chọn không
-                if (dataGridViewMonAn.CurrentRow != null && dataGridViewMonAn.CurrentRow.Index != -1)
-                {
-                    // Lấy mã món ăn từ cột ẩn
-                    maMonAn = int.Parse(dataGridViewMonAn.CurrentRow.Cells[0].Value.ToString()); // Cột 0: Mã Món Ăn (cột ẩn)
 
-                    txtTenMon.Text = dataGridViewMonAn.CurrentRow.Cells[1].Value.ToString();  // Cột 1: Tên Món Ăn
-                    txtLoaiMon.Text = dataGridViewMonAn.CurrentRow.Cells[2].Value.ToString(); // Cột 2: Loại Món Ăn
-                    txtCalo.Text = dataGridViewMonAn.CurrentRow.Cells[3].Value.ToString();    // Cột 3: Calo
-                    txtGhiChu.Text = dataGridViewMonAn.CurrentRow.Cells[4].Value.ToString();  // Cột 4: Ghi Chú
-                }
 
-            }
-        }
-
-        private void btnThem_MouseClick(object sender, MouseEventArgs e)
+        private void dataGridViewMonAn_MouseClick_1(object sender, MouseEventArgs e)
         {
             try
             {
-                // Tạo đối tượng món ăn mới
-                MonAn newMonAn = new MonAn
+                // Lấy thông tin về dòng được click trong DataGridView
+                var hitTestInfo = dataGridViewMonAn.HitTest(e.X, e.Y);
+
+                // Kiểm tra nếu dòng được chọn hợp lệ (không phải tiêu đề cột)
+                if (hitTestInfo.RowIndex >= 0)
                 {
-                    TenMonAn = txtTenMon.Text,
-                    LoaiMonAn = txtLoaiMon.Text,
-                    Calo = float.Parse(txtCalo.Text),  // Chuyển đổi từ string sang float
-                    GhiChu = txtGhiChu.Text
-                };
+                    // Lấy dữ liệu từ dòng được chọn
+                    DataGridViewRow row = dataGridViewMonAn.Rows[hitTestInfo.RowIndex];
 
-                // Gọi phương thức thêm món ăn
-                monAnRepository.AddMonAn(newMonAn);
+                    // Lấy giá trị của các cột mà bạn cần (kể cả cột ẩn)
+                    int maMonAn = Convert.ToInt32(row.Cells[0].Value);
+                    string tenMonAn = row.Cells[1].Value.ToString();
+                    string loaiMonAn = row.Cells[2].Value.ToString();
+                    float calo = Convert.ToSingle(row.Cells[3].Value);
+                    string ghiChu = row.Cells[4].Value.ToString();
+                    string buoi = row.Cells[5].Value.ToString();
 
-                // Tải lại dữ liệu để cập nhật DataGridView
-                LoadData();
+                    // Khởi tạo FrmChiTietMonAn_NguyenLieuMonAn và truyền dữ liệu
+                    FrmChiTietMonAn_NguyenLieuMonAn formChiTiet = new FrmChiTietMonAn_NguyenLieuMonAn();
+                    // Hiển thị form chi tiết món ăn
 
-                // Thông báo thành công
-                MessageBox.Show("Thêm món ăn thành công!");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Calo phải là một số hợp lệ.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi thêm món ăn: " + ex.Message);
-            }
-        }
+                    formChiTiet.AddMonAn(maMonAn, tenMonAn, loaiMonAn, calo, ghiChu, buoi);
+                    // Cho phép ng dùng thao tác trên form mới + chặn dòng dữ liệu sau nó
+                    formChiTiet.ShowDialog();
 
-        private void btnXoa_MouseClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                // Lấy tên món ăn từ txtTenMon
-                string tenMonAn = txtTenMon.Text.Trim();
-
-                // Kiểm tra tên món ăn có rỗng không
-                if (string.IsNullOrWhiteSpace(tenMonAn))
-                {
-                    MessageBox.Show("Vui lòng nhập tên món ăn để xóa.");
-                    return;
-                }
-
-                // Xác nhận trước khi xóa
-                var confirmResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa món ăn '{tenMonAn}'?",
-                                                     "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    // Gọi phương thức xóa món ăn theo tên
-                    monAnRepository.DeleteMonAnByName(tenMonAn);
-
-                    // Tải lại dữ liệu để cập nhật DataGridView
-                    LoadData();
-
-                    // Thông báo thành công
-                    MessageBox.Show("Xóa món ăn thành công!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xóa món ăn: " + ex.Message);
-            }
-        }
-
-        private void btnSua_MouseClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                // Tạo đối tượng món ăn mới
-                MonAn updatedMonAn = new MonAn
-                {
-                    MaMonAn = maMonAn,  // Sử dụng mã món ăn đã lưu
-                    TenMonAn = txtTenMon.Text,
-                    LoaiMonAn = txtLoaiMon.Text,
-                    Calo = float.Parse(txtCalo.Text),  // Chuyển đổi từ string sang float
-                    GhiChu = txtGhiChu.Text
-                };
-
-                // Gọi phương thức sửa món ăn
-                monAnRepository.UpdateMonAn(updatedMonAn);
-
-                // Tải lại dữ liệu để cập nhật DataGridView
-                LoadData();
-
-                // Thông báo thành công
-                MessageBox.Show("Sửa món ăn thành công!");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Calo phải là một số hợp lệ.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi sửa món ăn: " + ex.Message);
-            }
-        }
-
-        private void btnTim_MouseClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                // Lấy giá trị tìm kiếm từ txtTim
-                string searchTerm = txtTim.Text.Trim();
-
-                // Kiểm tra xem giá trị tìm kiếm có rỗng không
-                if (string.IsNullOrWhiteSpace(searchTerm))
-                {
-                    MessageBox.Show("Vui lòng nhập thông tin tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Gọi phương thức tìm kiếm từ MonAnRepository
-                List<MonAn> searchResults = monAnRepository.SearchMonAn(searchTerm);
-
-                // Kiểm tra kết quả tìm kiếm
-                if (searchResults.Count == 0)
-                {
-                    MessageBox.Show("Không tìm thấy món ăn nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // Cập nhật DataGridView với danh sách kết quả tìm kiếm
-                    dataGridViewMonAn.DataSource = searchResults;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
 
         private void btnTim_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Lấy giá trị từ TextBox tìm kiếm
+                string searchTerm = txtTim.Text.Trim();
 
+                // Gọi phương thức tìm kiếm
+                List<MonAn> result = monAnRepository.SearchMonAn(searchTerm);
+
+                // Gán danh sách kết quả vào DataGridView
+                dataGridViewMonAn.DataSource = result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm món ăn: " + ex.Message);
+            }
+        }
+
+
+
+        private void btnThem_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy dữ liệu từ các TextBox và ComboBox
+                string tenMonAn = txtTenMon.Text.Trim();
+
+                // Kiểm tra và lấy giá trị calo
+                if (!float.TryParse(txtCalo.Text.Trim(), out float calo) || calo < 0)
+                {
+                    MessageBox.Show("Số calo không hợp lệ. Vui lòng nhập số lớn hơn hoặc bằng 0.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Không thêm nếu số calo không hợp lệ
+                }
+
+                string loaiMonAn = cboLoaiMon.SelectedItem.ToString();
+                string buoi = cboBuoi.SelectedItem.ToString();
+                string ghiChu = txtGhiChu.Text.Trim();
+
+                // Kiểm tra xem tên món ăn có bị trùng hay không
+                var existingMonAnList = monAnRepository.GetAllMonAn(); // Lấy danh sách tất cả món ăn
+
+                if (existingMonAnList.Any(m => m.TenMonAn.Equals(tenMonAn, StringComparison.OrdinalIgnoreCase)))
+                {
+                    MessageBox.Show("Tên món ăn đã tồn tại. Vui lòng nhập tên khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Không thêm nếu trùng tên
+                }
+
+                // Tạo đối tượng món ăn mới
+                MonAn newMonAn = new MonAn
+                {
+                    TenMonAn = tenMonAn,
+                    Calo = calo,
+                    LoaiMonAn = loaiMonAn,
+                    Buoi = buoi,
+                    GhiChu = ghiChu
+                };
+
+                // Thêm món ăn vào cơ sở dữ liệu
+                monAnRepository.ThemMonAn(newMonAn);
+
+                // Tải lại dữ liệu để hiển thị món ăn mới
+                LoadData();
+
+                // Thông báo thành công
+                MessageBox.Show("Thêm món ăn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Xóa các trường nhập liệu sau khi thêm
+                txtTenMon.Clear();
+                txtCalo.Clear();
+                cboLoaiMon.SelectedIndex = 0; // Đặt về giá trị mặc định
+                cboBuoi.SelectedIndex = 0; // Đặt về giá trị mặc định
+                txtGhiChu.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm món ăn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
