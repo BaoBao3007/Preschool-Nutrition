@@ -10,6 +10,12 @@
     <Compile Update="Views\FrmChiTietMonAn_NguyenLieuMonAn.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\FrmCTTD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\FrmCTTDD.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\FrmDiemDanh.cs">
       <SubType>Form</SubType>
     </Compile>
