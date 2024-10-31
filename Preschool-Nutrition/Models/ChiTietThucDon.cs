@@ -10,6 +10,7 @@ namespace Preschool_Nutrition.Models
     {
         public int MaThucDon { get; set; }
         public int MaMonAn { get; set; }
+        public string TenMonAn { get; set; }
         public string GhiChu { get; set; }
 
         public ThucDon ThucDons { get; set; }

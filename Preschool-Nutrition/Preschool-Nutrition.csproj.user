@@ -25,6 +25,9 @@
     <Compile Update="Views\FrmHocSinh.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\FrmLichSuDiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\FrmNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\FrmThucDon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\MainForm.cs">

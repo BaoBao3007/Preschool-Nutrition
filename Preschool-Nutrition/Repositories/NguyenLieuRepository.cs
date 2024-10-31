@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace Preschool_Nutrition.Repositories
 {
-    public class NguyenLieuRepository
-    {
-        public void Add(NguyenLieu nguyenLieu)
+        public class NguyenLieuRepository
         {
-            using (var connection = DatabaseHelper.GetConnection())
+            public void Add(NguyenLieu nguyenLieu)
             {
-                string query = "INSERT INTO NguyenLieu (TenNguyenLieu, DonViTinh, LoaiNguyenLieu) VALUES (@TenNguyenLieu, @DonViTinh, @LoaiNguyenLieu)";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@TenNguyenLieu", nguyenLieu.TenNguyenLieu);
-                cmd.Parameters.AddWithValue("@DonViTinh", nguyenLieu.DonViTinh);
-                cmd.Parameters.AddWithValue("@LoaiNguyenLieu", nguyenLieu.LoaiNguyenLieu);
-                cmd.Parameters.AddWithValue("@SoLuongTonKho", nguyenLieu.SoLuongTonKho);
-                cmd.ExecuteNonQuery();
+                using (var connection = DatabaseHelper.GetConnection())
+                {
+                    string query = "INSERT INTO NguyenLieu (TenNguyenLieu, DonViTinh, LoaiNguyenLieu) VALUES (@TenNguyenLieu, @DonViTinh, @LoaiNguyenLieu)";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@TenNguyenLieu", nguyenLieu.TenNguyenLieu);
+                    cmd.Parameters.AddWithValue("@DonViTinh", nguyenLieu.DonViTinh);
+                    cmd.Parameters.AddWithValue("@LoaiNguyenLieu", nguyenLieu.LoaiNguyenLieu);
+                    cmd.Parameters.AddWithValue("@SoLuongTonKho", nguyenLieu.SoLuongTonKho);
+                    cmd.ExecuteNonQuery();
+                }
             }
-        }
         public void Update(NguyenLieu nguyenLieu)
         {
             using (var connection = DatabaseHelper.GetConnection())
@@ -138,11 +138,8 @@ namespace Preschool_Nutrition.Repositories
                 string query = "SELECT MaNguyenLieu FROM NguyenLieu WHERE TenNguyenLieu = @TenNguyenLieu LIMIT 1"; // Chỉ lấy 1 kết quả
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@TenNguyenLieu", tenNguyenLieu);
-
-                object result = cmd.ExecuteScalar(); // Lấy giá trị đầu tiên
-
-                // Kiểm tra kết quả và trả về mã nguyên liệu
-                return result != null ? Convert.ToInt32(result) : 0; // Trả về 0 nếu không tìm thấy
+                object result = cmd.ExecuteScalar(); 
+                return result != null ? Convert.ToInt32(result) : 0; 
             }
         }
 

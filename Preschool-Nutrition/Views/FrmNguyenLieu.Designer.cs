@@ -56,7 +56,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.MenuHighlight;
-            label1.Location = new Point(266, 24);
+            label1.Location = new Point(288, 9);
             label1.Name = "label1";
             label1.Size = new Size(484, 59);
             label1.TabIndex = 0;
@@ -230,7 +230,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1002, 844);
+            ClientSize = new Size(1009, 844);
             Controls.Add(groupBox2);
             Controls.Add(cbo_loaiNL);
             Controls.Add(txt_tenNL);

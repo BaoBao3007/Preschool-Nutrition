@@ -93,7 +93,8 @@ namespace Preschool_Nutrition.Views
         {
             // Xóa tất cả các cột cũ trước khi thêm mới
             dataGridViewMonAn.Columns.Clear();
-
+            dataGridViewMonAn.DataSource=null;
+            dataGridViewMonAn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // Thêm cột mã món ăn (cột ẩn)
             var maMonAnColumn = new DataGridViewTextBoxColumn
             {
@@ -145,8 +146,10 @@ namespace Preschool_Nutrition.Views
         {
             // Xóa tất cả các cột cũ trước khi thêm mới
             dataGridViewNguyenLieuMonAn.Columns.Clear();
-            //           dataGridViewNguyenLieuMonAn.AutoGenerateColumns = false;
+            // dataGridViewNguyenLieuMonAn.AutoGenerateColumns = false;
             // Thêm cột mã món ăn (cột ẩn)
+            dataGridViewNguyenLieuMonAn.DataSource = null;
+            dataGridViewNguyenLieuMonAn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             var maMonAnColumn = new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "MaMonAn", // Chắc chắn rằng thuộc tính này có trong mô hình
@@ -285,7 +288,8 @@ namespace Preschool_Nutrition.Views
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var mainForm = (MainForm)this.ParentForm;
+            mainForm.OpenChildForm(new FrmMonAn());
         }
 
         private void txtThemNL_Click(object sender, EventArgs e)

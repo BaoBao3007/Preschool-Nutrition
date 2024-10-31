@@ -11,7 +11,7 @@ namespace Preschool_Nutrition.Models
         public int MaPhieuNhap { get; set; }
         public DateTime NgayNhap { get; set; }
 
-        public string MaNhanVien { get; set; }
+        public int MaNhanVien { get; set; }
         public NhanVien NhanVien { get; set; }
 
         public ICollection<ChiTietPhieuNhapKho> ChiTietPhieuNhaps { get; set; }

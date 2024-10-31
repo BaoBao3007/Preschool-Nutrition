@@ -33,16 +33,13 @@ namespace Preschool_Nutrition.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             panelLeft = new Panel();
             groupBox1 = new GroupBox();
-            //btn_gv = new Button();
-            //btn_hs = new Button();
-            //btn_monan = new Button();
-            //btn_lophoc = new Button();
-            //btn_nguyenlieu = new Button();
+            btn_xemthucdon = new RoundedButton();
+            btn_lenthucdon = new RoundedButton();
             btn_gv = new RoundedButton();
             btn_hs = new RoundedButton();
             btn_monan = new RoundedButton();
-            btn_nguyenlieu = new RoundedButton();
             btn_lophoc = new RoundedButton();
+            btn_nguyenlieu = new RoundedButton();
             lbl_info = new Label();
             btn_logout = new Button();
             panelRight = new Panel();
@@ -64,6 +61,8 @@ namespace Preschool_Nutrition.Views
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btn_xemthucdon);
+            groupBox1.Controls.Add(btn_lenthucdon);
             groupBox1.Controls.Add(btn_gv);
             groupBox1.Controls.Add(btn_hs);
             groupBox1.Controls.Add(btn_monan);
@@ -71,13 +70,38 @@ namespace Preschool_Nutrition.Views
             groupBox1.Controls.Add(btn_nguyenlieu);
             groupBox1.Location = new Point(3, 239);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(343, 363);
+            groupBox1.Size = new Size(343, 403);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Quản lý";
             // 
+            // btn_xemthucdon
+            // 
+            btn_xemthucdon.BorderRadius = 40;
+            btn_xemthucdon.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_xemthucdon.Location = new Point(0, 290);
+            btn_xemthucdon.Name = "btn_xemthucdon";
+            btn_xemthucdon.Size = new Size(343, 43);
+            btn_xemthucdon.TabIndex = 6;
+            btn_xemthucdon.Text = "Xem thực đơn";
+            btn_xemthucdon.UseVisualStyleBackColor = true;
+            btn_xemthucdon.Click += btn_xemthucdon_Click;
+            // 
+            // btn_lenthucdon
+            // 
+            btn_lenthucdon.BorderRadius = 40;
+            btn_lenthucdon.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_lenthucdon.Location = new Point(0, 339);
+            btn_lenthucdon.Name = "btn_lenthucdon";
+            btn_lenthucdon.Size = new Size(343, 43);
+            btn_lenthucdon.TabIndex = 5;
+            btn_lenthucdon.Text = "Lên thực đơn";
+            btn_lenthucdon.UseVisualStyleBackColor = true;
+            btn_lenthucdon.Click += btn_lenthucdon_Click;
+            // 
             // btn_gv
             // 
+            btn_gv.BorderRadius = 40;
             btn_gv.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_gv.Location = new Point(0, 45);
             btn_gv.Name = "btn_gv";
@@ -89,6 +113,7 @@ namespace Preschool_Nutrition.Views
             // 
             // btn_hs
             // 
+            btn_hs.BorderRadius = 40;
             btn_hs.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_hs.Location = new Point(0, 94);
             btn_hs.Name = "btn_hs";
@@ -100,6 +125,7 @@ namespace Preschool_Nutrition.Views
             // 
             // btn_monan
             // 
+            btn_monan.BorderRadius = 40;
             btn_monan.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_monan.Location = new Point(0, 241);
             btn_monan.Name = "btn_monan";
@@ -111,6 +137,7 @@ namespace Preschool_Nutrition.Views
             // 
             // btn_lophoc
             // 
+            btn_lophoc.BorderRadius = 40;
             btn_lophoc.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_lophoc.Location = new Point(0, 143);
             btn_lophoc.Name = "btn_lophoc";
@@ -122,6 +149,7 @@ namespace Preschool_Nutrition.Views
             // 
             // btn_nguyenlieu
             // 
+            btn_nguyenlieu.BorderRadius = 40;
             btn_nguyenlieu.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_nguyenlieu.Location = new Point(0, 192);
             btn_nguyenlieu.Name = "btn_nguyenlieu";
@@ -183,13 +211,15 @@ namespace Preschool_Nutrition.Views
 
         private Panel panelLeft;
         private Panel panelRight;
-        private Button btn_lophoc;
-        private Button btn_hs;
-        private Button btn_nguyenlieu;
-        private Button btn_monan;
-        private Button btn_gv;
         private Button btn_logout;
         private Label lbl_info;
         private GroupBox groupBox1;
+        private RoundedButton btn_lenthucdon;
+        private RoundedButton btn_lophoc;
+        private RoundedButton btn_hs;
+        private RoundedButton btn_nguyenlieu;
+        private RoundedButton btn_monan;
+        private RoundedButton btn_gv;
+        private RoundedButton btn_xemthucdon;
     }
 }

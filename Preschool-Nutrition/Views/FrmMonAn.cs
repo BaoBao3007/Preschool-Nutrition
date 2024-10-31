@@ -20,13 +20,12 @@ namespace Preschool_Nutrition.Views
         {
             InitializeComponent();
             monAnRepository = new MonAnRepository();
-            LoadData();  // Gọi hàm tải dữ liệu khi khởi tạo form
+            LoadData(); 
             LoadLoaiMon();
             LoadBuoi();
         }
         private void LoadLoaiMon()
         {
-            // Thêm các giá trị cố định vào ComboBox
             cboLoaiMon.Items.Add("Món Chính");
             cboLoaiMon.Items.Add("Món Canh");
             cboLoaiMon.Items.Add("Món Phụ");
@@ -51,6 +50,7 @@ namespace Preschool_Nutrition.Views
             {
                 // Gọi phương thức để lấy danh sách món ăn
                 List<MonAn> monAnList = monAnRepository.GetAllMonAn();
+                dataGridViewMonAn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 // Đặt AutoGenerateColumns thành false để kiểm soát các cột hiển thị
                 dataGridViewMonAn.AutoGenerateColumns = false;
@@ -147,13 +147,7 @@ namespace Preschool_Nutrition.Views
                     string ghiChu = row.Cells[4].Value.ToString();
                     string buoi = row.Cells[5].Value.ToString();
 
-                    // Khởi tạo FrmChiTietMonAn_NguyenLieuMonAn và truyền dữ liệu
-                    FrmChiTietMonAn_NguyenLieuMonAn formChiTiet = new FrmChiTietMonAn_NguyenLieuMonAn();
-                    // Hiển thị form chi tiết món ăn
-
-                    formChiTiet.AddMonAn(maMonAn, tenMonAn, loaiMonAn, calo, ghiChu, buoi);
-                    // Cho phép ng dùng thao tác trên form mới + chặn dòng dữ liệu sau nó
-                    formChiTiet.ShowDialog();
+                    ((MainForm)this.ParentForm).OpenChiTietMonAn(maMonAn, tenMonAn, loaiMonAn, calo, ghiChu, buoi);
 
                 }
             }

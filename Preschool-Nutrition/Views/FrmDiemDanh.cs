@@ -62,6 +62,9 @@ namespace Preschool_Nutrition.Views
                 try
                 {
                     var students = danhController.LoadStudents(selectedClassId);
+                    dataGridViewStudents.DataSource = null;
+                    dataGridViewStudents.DataSource = null;
+                    dataGridViewStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dataGridViewStudents.DataSource = students;
                     dataGridViewStudents.RowHeadersWidth = 30;
                     dataGridViewStudents.RowTemplate.Height = 150;
