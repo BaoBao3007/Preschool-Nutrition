@@ -47,6 +47,9 @@ namespace Preschool_Nutrition.Controllers
         {
             return repository.ChangePassword(tenDangNhap, matKhauCu, matKhauMoi);
         }
-
+        public string FetchLoaiTaiKhoan(string tenDangNhap)
+        {
+            return repository.GetLoaiTaiKhoan(tenDangNhap);
+        }
     }
 }

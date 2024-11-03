@@ -88,15 +88,42 @@ namespace Preschool_Nutrition.Views
         {
             string tenDangNhap = txt_username.Text.Trim();
             string userInfo = taiKhoanController.GetUserInfo(tenDangNhap);
+            string loaiTaiKhoan = taiKhoanController.FetchLoaiTaiKhoan(tenDangNhap);
             this.Hide();
-            MainForm mainForm = new MainForm();
-            mainForm.UpdateUserInfo(userInfo);
-            mainForm.FormClosed += (s, args) =>
+            //MainForm mainForm = new MainForm();
+            //mainForm.UpdateUserInfo(userInfo);
+            //mainForm.FormClosed += (s, args) =>
+            //{
+            //    this.Dispose();
+            //};
+            //mainForm.UpdateUserInfo(userInfo);
+            //mainForm.ShowDialog();
+            if (loaiTaiKhoan == "Admin")
             {
-                this.Dispose();
-            };
-            mainForm.UpdateUserInfo(userInfo);
-            mainForm.ShowDialog();
+                MainForm mainForm = new MainForm();
+                mainForm.UpdateUserInfo(userInfo);
+                mainForm.FormClosed += (s, args) => this.Dispose();
+                mainForm.ShowDialog();
+            }
+            else if (loaiTaiKhoan == "NhanVien")
+            {
+                MainForm mainForm = new MainForm();
+                mainForm.DisableButtonsForNhanVien();
+                mainForm.UpdateUserInfo(userInfo);
+                mainForm.FormClosed += (s, args) => this.Dispose();
+                mainForm.ShowDialog();
+            }
+            else if (loaiTaiKhoan == "GiaoVien")
+            {
+                FrmDiemDanh frmDiemDanh = new FrmDiemDanh();
+                frmDiemDanh.FormClosed += (s, args) => this.Dispose();
+                frmDiemDanh.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Loại tài khoản không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Show();
+            }
         }
 
         private void btn_changepass_Click(object sender, EventArgs e)

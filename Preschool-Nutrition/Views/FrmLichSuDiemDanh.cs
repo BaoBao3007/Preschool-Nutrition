@@ -18,10 +18,12 @@ namespace Preschool_Nutrition.Views
         {
             InitializeComponent();
             historyController = new LichSuDiemDanhController();
+            CenterToScreen();
         }
         private void HistoryForm_Load(object sender, EventArgs e)
         {
             historyController.LoadClasses(comboBoxClass);
+            dataGridViewHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadAttendanceHistory();
         }
 

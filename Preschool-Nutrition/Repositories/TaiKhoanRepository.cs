@@ -255,20 +255,19 @@ namespace Preschool_Nutrition.Repositories
 
                 try
                 {
-                    object result = cmd.ExecuteScalar(); // Lấy kết quả từ câu truy vấn
+                    object result = cmd.ExecuteScalar(); 
                     if (result != null)
                     {
-                        return result.ToString(); // Trả về loại tài khoản
+                        return result.ToString(); 
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi nếu cần thiết (log hoặc ném ra ngoại lệ)
                     Console.WriteLine("Lỗi khi lấy loại tài khoản: " + ex.Message);
                 }
             }
 
-            return null; // Trả về null nếu không tìm thấy tên đăng nhập
+            return null; 
         }
     }
 }

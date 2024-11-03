@@ -19,6 +19,7 @@
             dataGridViewStudents = new DataGridView();
             btnSaveAttendance = new Button();
             lblClass = new Label();
+            btn_lsdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).BeginInit();
             SuspendLayout();
             // 
@@ -67,11 +68,23 @@
             lblClass.TabIndex = 3;
             lblClass.Text = "Lớp học:";
             // 
+            // btn_lsdd
+            // 
+            btn_lsdd.Location = new Point(219, 500);
+            btn_lsdd.Margin = new Padding(4, 5, 4, 5);
+            btn_lsdd.Name = "btn_lsdd";
+            btn_lsdd.Size = new Size(255, 47);
+            btn_lsdd.TabIndex = 4;
+            btn_lsdd.Text = "Xem lịch sử điểm danh";
+            btn_lsdd.UseVisualStyleBackColor = true;
+            btn_lsdd.Click += btn_lsdd_Click;
+            // 
             // FrmDiemDanh
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(739, 596);
+            Controls.Add(btn_lsdd);
             Controls.Add(lblClass);
             Controls.Add(btnSaveAttendance);
             Controls.Add(dataGridViewStudents);
@@ -89,5 +102,6 @@
         private System.Windows.Forms.DataGridView dataGridViewStudents;
         private System.Windows.Forms.Button btnSaveAttendance;
         private System.Windows.Forms.Label lblClass;
+        private Button btn_lsdd;
     }
 }

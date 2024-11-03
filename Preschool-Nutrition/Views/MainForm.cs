@@ -47,7 +47,7 @@ namespace Preschool_Nutrition.Views
             panelRight.Controls.Add(childForm);
             panelRight.Tag = childForm;
             childForm.BringToFront();
-            childForm.Show();
+            childForm.Show();   
         }
         public void OpenChiTietMonAn(int maMonAn, string tenMonAn, string loaiMonAn, float calo, string ghiChu, string buoi)
         {
@@ -162,6 +162,9 @@ namespace Preschool_Nutrition.Views
         {
             OpenChildForm(new FrmThucDon());
             HighlightButton(btn_xemthucdon);
+        }
+        public void DisableButtonsForNhanVien()
+        {
         }
     }
 }

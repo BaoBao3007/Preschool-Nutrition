@@ -21,6 +21,7 @@ namespace Preschool_Nutrition.Views
         {
             InitializeComponent();
             danhController = new DiemDanhController();
+            CenterToScreen();
         }
         public FrmDiemDanh(int maLopHoc)
         {
@@ -115,6 +116,14 @@ namespace Preschool_Nutrition.Views
             {
                 MessageBox.Show("Lỗi khi lưu điểm danh: " + ex.Message);
             }
+        }
+
+        private void btn_lsdd_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmLichSuDiemDanh frmLichSuDiemDanh = new FrmLichSuDiemDanh();
+            frmLichSuDiemDanh.FormClosed += (s, args) => this.Show();
+            frmLichSuDiemDanh.ShowDialog();
         }
     }
 }
