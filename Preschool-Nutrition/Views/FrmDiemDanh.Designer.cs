@@ -20,6 +20,7 @@
             btnSaveAttendance = new Button();
             lblClass = new Label();
             btn_lsdd = new Button();
+            btn_logout = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewStudents).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             // btnSaveAttendance
             // 
-            btnSaveAttendance.Location = new Point(500, 500);
+            btnSaveAttendance.Location = new Point(308, 500);
             btnSaveAttendance.Margin = new Padding(4, 5, 4, 5);
             btnSaveAttendance.Name = "btnSaveAttendance";
             btnSaveAttendance.Size = new Size(150, 47);
@@ -70,7 +71,7 @@
             // 
             // btn_lsdd
             // 
-            btn_lsdd.Location = new Point(219, 500);
+            btn_lsdd.Location = new Point(25, 500);
             btn_lsdd.Margin = new Padding(4, 5, 4, 5);
             btn_lsdd.Name = "btn_lsdd";
             btn_lsdd.Size = new Size(255, 47);
@@ -79,11 +80,22 @@
             btn_lsdd.UseVisualStyleBackColor = true;
             btn_lsdd.Click += btn_lsdd_Click;
             // 
+            // btn_logout
+            // 
+            btn_logout.Location = new Point(490, 500);
+            btn_logout.Name = "btn_logout";
+            btn_logout.Size = new Size(160, 47);
+            btn_logout.TabIndex = 5;
+            btn_logout.Text = "Đăng xuất";
+            btn_logout.UseVisualStyleBackColor = true;
+            btn_logout.Click += btn_logout_Click;
+            // 
             // FrmDiemDanh
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(739, 596);
+            Controls.Add(btn_logout);
             Controls.Add(btn_lsdd);
             Controls.Add(lblClass);
             Controls.Add(btnSaveAttendance);
@@ -103,5 +115,6 @@
         private System.Windows.Forms.Button btnSaveAttendance;
         private System.Windows.Forms.Label lblClass;
         private Button btn_lsdd;
+        private Button btn_logout;
     }
 }

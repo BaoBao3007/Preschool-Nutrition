@@ -125,5 +125,21 @@ namespace Preschool_Nutrition.Views
             frmLichSuDiemDanh.FormClosed += (s, args) => this.Show();
             frmLichSuDiemDanh.ShowDialog();
         }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.RememberMe = false;
+            Properties.Settings.Default.Username = string.Empty;
+            Properties.Settings.Default.Token = string.Empty;
+            Properties.Settings.Default.Save();
+            this.Hide();
+            FrmLogin login = new FrmLogin();
+            login.FormClosed += (s, args) =>
+            {
+                this.Close();
+            };
+            login.ShowDialog();
+            return;
+        }
     }
 }

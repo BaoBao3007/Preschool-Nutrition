@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Preschool-Nutrition")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6261528fc2ddc2180d383ea71129df9657e7b8dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0bc4e918561a84c182b0c04c02cb12b1be851ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("Preschool-Nutrition")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Preschool-Nutrition")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

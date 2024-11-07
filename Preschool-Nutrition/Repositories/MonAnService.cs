@@ -69,6 +69,21 @@ public class MonAnService
     // Biến toàn cục để theo dõi các món ăn đã chọn
     private HashSet<int> monAnDaChonToanBo = new HashSet<int>();
 
+    public int GetCaloMonAn(int maMonAn)
+    {
+        string sql = "SELECT Calo FROM MonAn WHERE MaMonAn = @MaMonAn";
+
+        using (var conn = DatabaseHelper.GetConnection())
+        {
+            using (var cmd = new MySqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@MaMonAn", maMonAn);
+                object result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }
+    }
+
     private void CreateThucDonChoBuoi(DateTime date, int maThucDonTuan, string buoi, int soLuongMonAn)
     {
         // Lấy danh sách mã món ăn cho buổi ăn
@@ -89,16 +104,27 @@ public class MonAnService
 
         // Chọn ngẫu nhiên các món ăn và lưu vào ChiTietThucDon
         Random random = new Random();
-        HashSet<int> monAnDaChon = new HashSet<int>(); // Để đảm bảo không chọn món ăn trùng
+        HashSet<int> monAnDaChon = new HashSet<int>();
+        int tongCalo = 0; // Theo dõi tổng calo
 
         while (monAnDaChon.Count < soLuongMonAn)
         {
             int maMonAn = danhSachMonAnKhongTrung[random.Next(danhSachMonAnKhongTrung.Count)];
+
             if (monAnDaChon.Add(maMonAn)) // Nếu món ăn chưa được chọn
             {
+                int caloMonAn = GetCaloMonAn(maMonAn);
+                tongCalo += caloMonAn;
+
                 CreateChiTietThucDon(maThucDon, maMonAn, ""); // Lưu chi tiết món ăn
             }
         }
+
+        //// Kiểm tra tổng calo cho buổi ăn
+        //if (tongCalo < 200 || tongCalo > 1200)
+        //{
+        //    throw new Exception($"Tổng lượng calo cho ngày {date.ToShortDateString()} không đạt yêu cầu (800-1000 calo). Hiện tại là: {tongCalo} calo.");
+        //}
 
         // Thêm các món ăn đã chọn vào danh sách toàn cục
         foreach (var maMonAn in monAnDaChon)
@@ -113,65 +139,27 @@ public class MonAnService
 
         for (DateTime date = ngayBatDau; date <= ngayKetThuc; date = date.AddDays(1))
         {
-            // Sáng: 1 món nhẹ và 1 món nước
-            CreateThucDonChoBuoi(date, maThucDonTuan, "Sáng", 1);
+            // Kiểm tra nếu ngày là thứ Bảy hoặc Chủ Nhật
+            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                Console.WriteLine($"Không tạo thực đơn vào cuối tuần: {date.ToShortDateString()} là {date.DayOfWeek}");
+                continue; // Bỏ qua việc tạo thực đơn cho ngày này
+            }
 
-            // Trưa: Tạo từng món ăn riêng biệt
-            // Mỗi món ăn cho bữa trưa sẽ được chọn ngẫu nhiên và không trùng lặp
-            CreateThucDonChoBuoi(date, maThucDonTuan, "Trưa", 3); // 3 món: 1 món chính, 1 món tráng miệng, 1 món canh
+            // Sáng: 1 món nhẹ và 1 món nước
+            CreateThucDonChoBuoi(date, maThucDonTuan, "Sáng", 2);
+
+            // Trưa: 3 món: 1 món chính, 1 món tráng miệng, 1 món canh
+            CreateThucDonChoBuoi(date, maThucDonTuan, "Trưa", 4);
 
             // Xế: 1 món ăn kèm và 1 món nước
-            CreateThucDonChoBuoi(date, maThucDonTuan, "Xế", 1);
+            CreateThucDonChoBuoi(date, maThucDonTuan, "Xế", 2);
         }
     }
 
 
-    //private void CreateThucDonChoBuoi(DateTime date, int maThucDonTuan, string buoi, int soLuongMonAn)
-    //{
-    //    // Lấy danh sách mã món ăn cho buổi ăn
-    //    List<int> danhSachMonAn = GetMaMonAnTheoBuoi(buoi, soLuongMonAn);
-
-    //    if (danhSachMonAn.Count < soLuongMonAn)
-    //    {
-    //        throw new Exception($"Không đủ món ăn cho bữa {buoi} vào ngày {date.ToShortDateString()}.");
-    //    }
-
-    //    // Tạo thực đơn cho buổi ăn
-    //    int maThucDon = CreateThucDon(date, maThucDonTuan, soLuongMonAn, buoi);
-
-    //    // Chọn ngẫu nhiên các món ăn và lưu vào ChiTietThucDon
-    //    Random random = new Random();
-    //    HashSet<int> monAnDaChon = new HashSet<int>(); // Để đảm bảo không chọn món ăn trùng
-
-    //    while (monAnDaChon.Count < soLuongMonAn)
-    //    {
-    //        int maMonAn = danhSachMonAn[random.Next(danhSachMonAn.Count)];
-    //        if (monAnDaChon.Add(maMonAn)) // Nếu món ăn chưa được chọn
-    //        {
-    //            CreateChiTietThucDon(maThucDon, maMonAn, ""); // Lưu chi tiết món ăn
-    //        }
-    //    }
-    //}
 
 
-    //public void GenerateThucDon(DateTime ngayBatDau, DateTime ngayKetThuc)
-    //{
-    //    int maThucDonTuan = CreateThucDonTuan(ngayBatDau, ngayKetThuc);
-
-    //    for (DateTime date = ngayBatDau; date <= ngayKetThuc; date = date.AddDays(1))
-    //    {
-    //        // Sáng: 1 món nhẹ và 1 món nước
-    //        CreateThucDonChoBuoi(date, maThucDonTuan, "Sáng", 2);
-
-    //        // Trưa: Tạo từng món ăn riêng biệt
-    //        CreateMonChinh(date, maThucDonTuan);
-    //        CreateMonTrangMieng(date, maThucDonTuan);
-    //        CreateMonCanh(date, maThucDonTuan);
-
-    //        // Xế: 1 món ăn kèm và 1 món nước
-    //        CreateThucDonChoBuoi(date, maThucDonTuan, "Xế", 2);
-    //    }
-    //}
     private void CreateMonChinh(DateTime date, int maThucDonTuan)
     {
         CreateThucDonChoBuoi(date, maThucDonTuan, "Trưa", 1); // 1 món chính
@@ -203,25 +191,6 @@ public class MonAnService
             }
         }
     }
-
-    //public void GenerateThucDon(DateTime ngayBatDau, DateTime ngayKetThuc)
-    //{
-    //    int maThucDonTuan = CreateThucDonTuan(ngayBatDau, ngayKetThuc);
-    //    Random random = new Random();
-
-    //    for (DateTime date = ngayBatDau; date <= ngayKetThuc; date = date.AddDays(1))
-    //    {
-    //        // Sáng: 1 món nhẹ
-    //        CreateThucDonChoBuoi(date, maThucDonTuan, "Sáng", 1);
-
-    //        // Trưa: các món như món canh, món chính, món tráng miệng
-    //        CreateThucDonChoBuoi(date, maThucDonTuan, "Trưa", 3);
-
-    //        // Xế: món nước
-    //        CreateThucDonChoBuoi(date, maThucDonTuan, "Xế", 1);
-    //    }
-    //}
-
 
     private int GetLatestMaThucDon(int maThucDonTuan, DateTime date, string buoi)
     {
